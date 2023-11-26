@@ -1,23 +1,113 @@
-import logo from './logo.svg';
-import './App.css';
+import { createTheme, ThemeProvider } from '@mui/material'
+import { useState, useEffect } from 'react'
+import React from 'react';
+import { Box } from '@mui/material';
+import Sidenav from './components/Sidenav/Sidenav';
+import { BrowserRouter as Router } from 'react-router-dom';
+
+const lightTheme = createTheme({
+  palette: {
+    mode: 'light',
+    primary: {
+      main: '#8A0303',
+      text: '#524747'
+    },
+    background: {
+      default: '#e8caca',
+      paper: '#e8dada'
+    }
+  },
+  components: {
+    MuiListItemButton: {
+      styleOverrides: {
+        root: {
+          '&:hover': {
+            backgroundColor: '#e8caca',
+          },
+        },
+      },
+    },
+  },
+});
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: '#D21919',
+      text: '#e3dede'
+    },
+    background: {
+      default: '#634a4a',
+      paper: '#251e1d'
+    }
+  },
+  components: {
+    MuiListItemButton: {
+      styleOverrides: {
+        root: {
+          '&:hover': {
+            backgroundColor: '#634a4a',
+          },
+        },
+      },
+    },
+  },
+});
 
 function App() {
+
+  const [darkMode, setDarkMode] = useState(false)
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const changeMode = () => {
+    console.log("Clicked")
+    darkMode ? setDarkMode(false) : setDarkMode(true)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+
+
+          <Router>
+            <Box sx={{
+                width: '100%',
+                height: '100vh',
+                bgcolor: 'background.default',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                flexDirection: 'row',
+                gap: '15px',
+                transition: 'all 1s'
+            }}>
+              
+              <Sidenav 
+                windowWidth={windowWidth} 
+                lightTheme={lightTheme} 
+                darkTheme={darkTheme} 
+                darkMode={darkMode} 
+                changeMode={changeMode}
+              />
+              
+            </Box>
+          </Router>
+
+
+      </ThemeProvider>
     </div>
   );
 }
