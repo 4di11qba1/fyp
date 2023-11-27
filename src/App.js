@@ -4,6 +4,7 @@ import React from 'react';
 import { Box } from '@mui/material';
 import Sidenav from './components/Sidenav/Sidenav';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 
 const lightTheme = createTheme({
   palette: {
@@ -82,29 +83,31 @@ function App() {
       <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
 
 
-          <Router>
-            <Box sx={{
-                width: '100%',
-                height: '100vh',
-                bgcolor: 'background.default',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                flexDirection: 'row',
-                gap: '15px',
-                transition: 'all 1s'
-            }}>
-              
-              <Sidenav 
-                windowWidth={windowWidth} 
-                lightTheme={lightTheme} 
-                darkTheme={darkTheme} 
-                darkMode={darkMode} 
-                changeMode={changeMode}
-              />
-              
-            </Box>
-          </Router>
+          <AnimatePresence>
+              <Router>
+                <Box sx={{
+                    width: '100%',
+                    height: '100vh',
+                    bgcolor: 'background.default',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    flexDirection: 'row',
+                    gap: '15px',
+                    transition: 'all 1s'
+                }}>
+                  
+                  <Sidenav 
+                    windowWidth={windowWidth} 
+                    lightTheme={lightTheme} 
+                    darkTheme={darkTheme} 
+                    darkMode={darkMode} 
+                    changeMode={changeMode}
+                  />
+                  
+                </Box>
+              </Router>
+          </AnimatePresence>
 
 
       </ThemeProvider>

@@ -26,6 +26,7 @@ import useScrollTrigger from '@mui/material/useScrollTrigger';
 import PersonIcon from '@mui/icons-material/Person';
 import './Sidenav.css';
 import Searchbar from '../Searchbar/Searchbar';
+import Main from '../Home/Main';
 
 const drawerWidth = 240;
 
@@ -287,9 +288,7 @@ export default function MiniDrawer({ windowWidth, lightTheme, darkTheme, darkMod
                 
                 <Route exact path="/" element={
                   <>
-                    <Typography component="div" variant="h1">
-                      Gamer's Utopia
-                    </Typography>
+                    <Main />
                   </>  
                 } />
             </Routes>
