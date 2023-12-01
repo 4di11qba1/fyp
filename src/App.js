@@ -90,8 +90,8 @@ function App() {
                     height: '100vh',
                     bgcolor: 'background.default',
                     display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
+                    // justifyContent: 'center',
+                    // alignItems: 'center',
                     flexDirection: 'row',
                     gap: '15px',
                     transition: 'all 1s'

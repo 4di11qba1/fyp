@@ -1,4 +1,5 @@
 import { Typography } from "@mui/material";
+import './TopPicks.css';
 
 const itemData = [
     {
@@ -41,7 +42,7 @@ function TopPicks({heading}) {
         <Typography component="div" variant="h6" fontWeight={'bold'}>
             {heading}
         </Typography>
-        <div style={{display: 'flex', overflowX: 'auto', maxWidth: '90vw', height: '200px', gap: '15px', marginTop: '5px'}}>
+        <div className="top-picks">
             {itemData.map((item) => (
                 
                 <img

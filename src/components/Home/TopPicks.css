@@ -1,0 +1,12 @@
+.top-picks {
+    display: flex;
+    overflow-x: auto;
+    max-width: 89.25vw;
+    height: 200px;
+    gap: 15px;
+    margin-top: 5px;
+}
+
+.top-picks::-webkit-scrollbar {
+    display: none;
+}
