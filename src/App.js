@@ -85,17 +85,17 @@ function App() {
 
           <AnimatePresence>
               <Router>
-                <Box sx={{
-                    width: '100%',
-                    height: '100vh',
+                {/* <Box sx={{
+                    // width: '100%',
+                    // height: '100vh',
                     bgcolor: 'background.default',
                     display: 'flex',
-                    // justifyContent: 'center',
-                    // alignItems: 'center',
+                    justifyContent: 'center',
+                    alignItems: 'center',
                     flexDirection: 'row',
                     gap: '15px',
                     transition: 'all 1s'
-                }}>
+                }}> */}
                   
                   <Sidenav 
                     windowWidth={windowWidth} 
@@ -105,7 +105,7 @@ function App() {
                     changeMode={changeMode}
                   />
                   
-                </Box>
+                {/* </Box> */}
               </Router>
           </AnimatePresence>
 

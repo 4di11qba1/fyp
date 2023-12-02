@@ -1,12 +1,22 @@
 .top-picks {
     display: flex;
     overflow-x: auto;
-    max-width: 89.25vw;
-    height: 200px;
+    max-width: 90.5vw;
+    height: 150px;
     gap: 15px;
     margin-top: 5px;
 }
 
 .top-picks::-webkit-scrollbar {
     display: none;
+}
+
+.top-picks-image {
+    border-radius: 15px;
+    transition: all 0.5s;
+}
+
+.top-picks-image:hover {
+    transition: all 0.5s;
+    transform: scaleX(1.05);
 }

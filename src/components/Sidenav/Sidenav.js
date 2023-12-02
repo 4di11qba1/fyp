@@ -22,7 +22,6 @@ import { useNavigate } from 'react-router-dom';
 import SignIn from '../SignIn/SignIn';
 import SignUp from '../SignUp/SignUp';
 import { Route, Routes, useLocation } from 'react-router-dom';
-import useScrollTrigger from '@mui/material/useScrollTrigger';
 import PersonIcon from '@mui/icons-material/Person';
 import './Sidenav.css';
 import Searchbar from '../Searchbar/Searchbar';
@@ -100,11 +99,6 @@ export default function MiniDrawer({ windowWidth, lightTheme, darkTheme, darkMod
   const nav = useNavigate();
   const location = useLocation();
 
-  const trigger = useScrollTrigger({
-    disableHysteresis: true,
-    threshold: 0,
-  });
-
   const isActive = (path) => {
     return location.pathname === path;
   };
@@ -124,7 +118,7 @@ export default function MiniDrawer({ windowWidth, lightTheme, darkTheme, darkMod
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open} sx={{backgroundColor: trigger ? 'transparent' : '', boxShadow: trigger ? 'none' : ''}}>
+      <AppBar position="fixed" open={open}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -133,15 +127,14 @@ export default function MiniDrawer({ windowWidth, lightTheme, darkTheme, darkMod
             edge="start"
             sx={{
               marginRight: 5,
-              ...(open && { display: 'none' }),
-              color: trigger ? 'primary.text' : ''
+              ...(open && { display: 'none' })
             }}
           >
             <MenuIcon />
           </IconButton>
           <div style={{display: 'flex', width: '100%', justifyContent: 'space-between', alignItems: 'center'}}>
 
-            <Typography variant="h6" noWrap component="div" sx={{visibility: trigger ? 'hidden' : 'visibility'}}>
+            <Typography variant="h6" noWrap component="div">
               Gamer's Utopia
             </Typography>
             <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
@@ -279,7 +272,7 @@ export default function MiniDrawer({ windowWidth, lightTheme, darkTheme, darkMod
             </ListItem>
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Box component="main" sx={{ flexGrow: 1, p: 3, padding: '15px' }}>
         <DrawerHeader />
 
             <Routes>
