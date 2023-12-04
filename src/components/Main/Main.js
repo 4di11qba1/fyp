@@ -2,6 +2,7 @@ import { Card } from "@mui/material";
 import TopPicks from "./TopPicks";
 import Popular from "./Popular";
 import { motion } from 'framer-motion';
+import Carousel from "./Carousel/Carousel";
 import './Main.css'
 
 const itemData = [
@@ -69,6 +70,9 @@ function Main() {
             transition={{duration: 0.25}}
     >
           <div style={{display: 'flex', flexDirection: 'column', gap: '15px'}}>
+
+            <Carousel />
+
             <Card sx={{padding: '20px', borderRadius: '15px'}}>
               <TopPicks heading={'Favorites'} itemData={itemData} />
               <TopPicks heading={'Recommended'} itemData={itemData} />

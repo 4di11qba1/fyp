@@ -1,10 +1,10 @@
 import { createTheme, ThemeProvider } from '@mui/material'
 import { useState, useEffect } from 'react'
 import React from 'react';
-import { Box } from '@mui/material';
 import Sidenav from './components/Sidenav/Sidenav';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
+// import { Color } from '@mui/material';
 
 const lightTheme = createTheme({
   palette: {
@@ -25,6 +25,13 @@ const lightTheme = createTheme({
           '&:hover': {
             backgroundColor: '#e8caca',
           },
+        },
+      },
+    },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          boxShadow: 'none'
         },
       },
     },
@@ -50,6 +57,13 @@ const darkTheme = createTheme({
           '&:hover': {
             backgroundColor: '#634a4a',
           },
+        },
+      },
+    },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          boxShadow: 'none'
         },
       },
     },

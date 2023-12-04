@@ -25,7 +25,7 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 import PersonIcon from '@mui/icons-material/Person';
 import './Sidenav.css';
 import Searchbar from '../Searchbar/Searchbar';
-import Main from '../Home/Main';
+import Main from '../Main/Main';
 
 const drawerWidth = 240;
 
@@ -272,7 +272,7 @@ export default function MiniDrawer({ windowWidth, lightTheme, darkTheme, darkMod
             </ListItem>
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3, padding: '15px' }}>
+      <Box component="main" sx={{ width: '50vw', flexGrow: 1, p: 3, padding: '15px' }}>
         <DrawerHeader />
 
             <Routes>
