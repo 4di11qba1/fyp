@@ -62,7 +62,7 @@ const itemData = [
   }
 ];
 
-function Main() {
+function Main({darkTheme, lightTheme, darkMode}) {
   return (
     <motion.div
             initial={{opacity: 0, x: -200}}
@@ -71,7 +71,7 @@ function Main() {
     >
           <div style={{display: 'flex', flexDirection: 'column', gap: '15px'}}>
 
-            <Carousel />
+            <Carousel lightTheme={lightTheme} darkTheme={darkTheme} darkMode={darkMode} itemData={itemData} />
 
             <Card sx={{padding: '20px', borderRadius: '15px'}}>
               <TopPicks heading={'Favorites'} itemData={itemData} />

@@ -281,7 +281,7 @@ export default function MiniDrawer({ windowWidth, lightTheme, darkTheme, darkMod
                 
                 <Route exact path="/" element={
                   <>
-                    <Main />
+                    <Main lightTheme={lightTheme} darkTheme={darkTheme} darkMode={darkMode} />
                   </>  
                 } />
             </Routes>
