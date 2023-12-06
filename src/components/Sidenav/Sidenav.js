@@ -9,7 +9,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+// import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -130,7 +130,7 @@ export default function MiniDrawer({ windowWidth, lightTheme, darkTheme, darkMod
               ...(open && { display: 'none' })
             }}
           >
-            <MenuIcon />
+            <img src='img/tiger-logo.jpg' alt='Logo' style={{width: '25px'}} />
           </IconButton>
           <div style={{display: 'flex', width: '100%', justifyContent: 'space-between', alignItems: 'center'}}>
 
@@ -281,7 +281,7 @@ export default function MiniDrawer({ windowWidth, lightTheme, darkTheme, darkMod
                 
                 <Route exact path="/" element={
                   <>
-                    <Main lightTheme={lightTheme} darkTheme={darkTheme} darkMode={darkMode} />
+                    <Main lightTheme={lightTheme} darkTheme={darkTheme} darkMode={darkMode} windowWidth={windowWidth} />
                   </>  
                 } />
             </Routes>

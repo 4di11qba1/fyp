@@ -1,9 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Button } from '@mui/material';
+import HoveredCard from '../HoveredCard/HoveredCard';
 import './Carousel.css';
 
-const Carousel = ({darkTheme, lightTheme, darkMode}) => {
+const Carousel = ({darkTheme, lightTheme, darkMode, windowWidth}) => {
 
   const itemData = [
     {
@@ -41,6 +41,7 @@ const Carousel = ({darkTheme, lightTheme, darkMode}) => {
   const [bgColor, setBgColor] = useState();
   const [textColor, setTextColor] = useState();
   const [hoveredIndex, setHoveredIndex] = useState(0);
+  // const [scalingFactor, setScalingFactor] = useState(0);
 
   useEffect(() => {
     setBgColor({
@@ -50,7 +51,11 @@ const Carousel = ({darkTheme, lightTheme, darkMode}) => {
     setTextColor({
       color: darkMode ? darkTheme.palette.primary.text : lightTheme.palette.primary.text
     })
-  }, [darkMode, darkTheme, lightTheme])
+  }, [darkMode, darkTheme, lightTheme]);
+
+  // useEffect(() => {
+  //   setScalingFactor(Math.min(windowWidth / 1920, 1));
+  // }, [windowWidth]);
 
   const handleCardHover = (index) => {
     setHoveredIndex(index);
@@ -61,7 +66,7 @@ const Carousel = ({darkTheme, lightTheme, darkMode}) => {
   // };
 
   return (
-    <div className="void" id="void">
+    <div className="void" id="void" /*style={{ transform: `scale(${scalingFactor}, ${scalingFactor})` }}*/>
       <div className="crop">
         <ul className="card-list" style={{ '--count': 5 }}>
           {itemData.slice(0, 5).map((item, index) => (
@@ -84,42 +89,28 @@ const Carousel = ({darkTheme, lightTheme, darkMode}) => {
         <div className="second-circle"></div>
       </div>
       <div className="mask">
-        {(hoveredIndex !== null && hoveredIndex >= 0) ? 
-          <>
-            <div className="hoveredCard">
-              <img src={itemData[hoveredIndex].img} alt={itemData[hoveredIndex].title} />
-              <div className="card-content">
-                <h2>
-                  {itemData[hoveredIndex].title}
-                </h2>
-                <p>
-                  {itemData[hoveredIndex].desc}
-                </p>
-                <a href="www.google.com" className="button">
-                  <Button variant='contained' size="medium">{itemData[hoveredIndex].price}</Button>
-                </a>
-              </div>
-            </div>
-          </> : null
-        }
+        {(hoveredIndex !== null && hoveredIndex >= 0) ? <HoveredCard item={itemData[hoveredIndex]} /> : null}
       </div>
-      <div className="center-circle" style={bgColor}>
-        <svg className='circular-svg' viewBox="0 0 100 100">
-          <defs>
-            <path id="circle"
-              d="
-                M 50, 50
-                m -37, 0
-                a 37,37 0 1,1 74,0
-                a 37,37 0 1,1 -74,0"/>
-          </defs>
-          <text fontSize="17">
-            <textPath xlinkHref="#circle">
-              Gamer's Utopia
-            </textPath>
-          </text>
-        </svg>
-      </div>
+      {windowWidth > 1000 ? 
+        <div className="center-circle" style={bgColor}>
+          {/* <svg className='circular-svg' viewBox="0 0 100 100">
+            <defs>
+              <path id="circle"
+                d="
+                  M 50, 50
+                  m -37, 0
+                  a 37,37 0 1,1 74,0
+                  a 37,37 0 1,1 -74,0"/>
+            </defs>
+            <text fontSize="17">
+              <textPath xlinkHref="#circle">
+                Gamer's Utopia
+              </textPath>
+            </text>
+          </svg> */}
+          <img src='img/tiger-logo.jpg' alt='Logo' style={{width: '200px'}} />
+        </div> : null
+      }
     </div>
   );
 };
