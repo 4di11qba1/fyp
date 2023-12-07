@@ -2,15 +2,17 @@ import React from 'react';
 import { Button } from '@mui/material';
 import './HoveredCard.css';
 
-function HoveredCard({ item }) {
+function HoveredCard({ item, h2 }) {
   return (
     <>
         <div className="hoveredCard">
             <img src={item.img} alt={item.title} />
             <div className="card-content">
-                <h2>
-                    {item.title}
-                </h2>
+                {h2 && 
+                    <h2>
+                        {item.title}
+                    </h2>
+                }
                 <p>
                     {item.desc}
                 </p>

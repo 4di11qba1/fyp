@@ -25,6 +25,7 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 import PersonIcon from '@mui/icons-material/Person';
 import './Sidenav.css';
 import Searchbar from '../Searchbar/Searchbar';
+import Test from '../Test/Test';
 import Main from '../Main/Main';
 
 const drawerWidth = 240;
@@ -249,7 +250,7 @@ export default function MiniDrawer({ windowWidth, lightTheme, darkTheme, darkMod
             </List>
         <Divider />
         <List>
-          <ListItem disablePadding sx={{ display: 'block' }}>
+          <ListItem disablePadding sx={{ display: 'block' }} onClick={() => navigateTo('/test')}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -278,6 +279,7 @@ export default function MiniDrawer({ windowWidth, lightTheme, darkTheme, darkMod
             <Routes>
                 <Route exact path="/signin" element={<SignIn windowWidth={windowWidth} />} />
                 <Route exact path="/signup" element={<SignUp windowWidth={windowWidth} />} />
+                <Route exact path="/test" element={<Test windowWidth={windowWidth} />} />
                 
                 <Route exact path="/" element={
                   <>

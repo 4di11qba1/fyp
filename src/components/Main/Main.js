@@ -1,8 +1,11 @@
 import { Card } from "@mui/material";
 import TopPicks from "./TopPicks";
+import { useEffect, useState } from "react";
 import Popular from "./Popular";
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import Carousel from "./Carousel/Carousel";
+import MobileCarousel from "./Carousel/MobileCarousel/MobileCarousel";
+import LandingText from "../LandingText/LandingText";
 import './Main.css'
 
 const itemData = [
@@ -62,36 +65,93 @@ const itemData = [
   }
 ];
 
-function Main({darkTheme, lightTheme, darkMode, windowWidth}) {
+function Main({ darkTheme, lightTheme, darkMode, windowWidth }) {
+  const [showLandingText, setShowLandingText] = useState(true);
+
+  useEffect(() => {
+    // Hide landing text after a delay (adjust the delay as needed)
+    const timeoutId = setTimeout(() => {
+      setShowLandingText(false);
+    }, 4000);
+
+    return () => {
+      // Clear timeout on component unmount
+      clearTimeout(timeoutId);
+    };
+  }, []);
+
   return (
     <motion.div
-            initial={{opacity: 0, x: -200}}
-            animate={{opacity: 1, x: 0}}
-            transition={{duration: 0.25}}
+      initial={{ opacity: 0, x: -200 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.25 }}
     >
-          <div style={{display: 'flex', flexDirection: 'column', gap: '15px'}}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+        <AnimatePresence>
+          {showLandingText && (
+            <motion.div
+              key="landingText"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -1000 }}
+              transition={{ duration: 1.5 }}
+            >
+              <LandingText />
+            </motion.div>
+          )}
+        </AnimatePresence>
 
-            <Carousel lightTheme={lightTheme} darkTheme={darkTheme} darkMode={darkMode} itemData={itemData} windowWidth={windowWidth} />
-              
-            <Card sx={{padding: '20px', borderRadius: '15px'}}>
-              <TopPicks heading={'Favorites'} itemData={itemData} />
-              <TopPicks heading={'Recommended'} itemData={itemData} />
-            </Card>
+        <AnimatePresence>   
+          {!showLandingText && (
+            <motion.div
+              key="mainBody"
+              initial={{opacity: 0, y: 1000}}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 1 }}
+            >
+              {windowWidth > 1000 ? (
+                <Carousel
+                  lightTheme={lightTheme}
+                  darkTheme={darkTheme}
+                  darkMode={darkMode}
+                  itemData={itemData}
+                  windowWidth={windowWidth}
+                />
+              ) : (
+                <MobileCarousel />
+              )}
+              <Card sx={{ padding: '20px', borderRadius: '15px' }}>
+                <TopPicks heading={'Favorites'} itemData={itemData} />
+                <TopPicks heading={'Recommended'} itemData={itemData} />
+              </Card>
 
-            {/* <Card sx={{display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', padding: '10px 0 10px 20px', borderRadius: '15px'}}>
+              {/* Uncomment the block if needed */}
+              {/* <Card
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  width: '100%',
+                  padding: '10px 0 10px 20px',
+                  borderRadius: '15px',
+                }}
+              >
                 <Typography component="div" variant="h5" fontWeight={'bold'}>
                   Populars
                 </Typography>
-            </Card> */}
+              </Card> */}
 
-            <div className="popular">
-              {itemData.map((item) => (
-                <Popular key={item.title} item={item} />
-              ))}
-            </div>
-          </div>
+              <div className="popular">
+                {itemData.map((item) => (
+                  <Popular key={item.title} item={item} />
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </motion.div>
-  )
+  );
 }
 
 export default Main;

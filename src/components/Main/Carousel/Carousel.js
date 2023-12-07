@@ -89,7 +89,7 @@ const Carousel = ({darkTheme, lightTheme, darkMode, windowWidth}) => {
         <div className="second-circle"></div>
       </div>
       <div className="mask">
-        {(hoveredIndex !== null && hoveredIndex >= 0) ? <HoveredCard item={itemData[hoveredIndex]} /> : null}
+        {(hoveredIndex !== null && hoveredIndex >= 0) ? <HoveredCard item={itemData[hoveredIndex]} h2={true} /> : null}
       </div>
       {windowWidth > 1000 ? 
         <div className="center-circle" style={bgColor}>
