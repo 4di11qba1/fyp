@@ -1,13 +1,12 @@
-import { Card } from "@mui/material";
+import { Card, Divider } from "@mui/material";
 import TopPicks from "./TopPicks";
 import { useEffect, useState } from "react";
-import Popular from "./Popular";
 import { AnimatePresence, motion } from 'framer-motion';
 import Carousel from "./Carousel/Carousel";
 import MobileCarousel from "./Carousel/MobileCarousel/MobileCarousel";
 import LandingText from "../LandingText/LandingText";
-import './Main.css'
 import LandingTransition from "../LandingTransition/LandingTransition";
+import GList from "./GList";
 
 function Main({ darkTheme, lightTheme, darkMode, windowWidth }) {
   const [showLandingText, setShowLandingText] = useState(true);
@@ -67,36 +66,22 @@ function Main({ darkTheme, lightTheme, darkMode, windowWidth }) {
               ) : (
                 <MobileCarousel />
               )}
-              <Card sx={{ padding: '20px', borderRadius: '15px' }}>
-                <TopPicks 
-                    heading={'Favorites'} 
-                    itemData={itemData} 
-                    lightTheme={lightTheme} 
-                    darkTheme={darkTheme} 
-                    darkMode={darkMode} />
+
+              <TopPicks 
+                  heading={'Favorites'} 
+                  itemData={itemData} 
+                  lightTheme={lightTheme} 
+                  darkTheme={darkTheme} 
+                  darkMode={darkMode} />
+
+              <Card sx={{ display: 'flex', flexWrap: 'wrap', gap: '15px', minHeight: '300px', padding: '25px', borderRadius: '15px' }}>
+                <GList heading={'Top Sellers'} itemData={itemData} />
+                <Divider orientation="vertical" flexItem />
+                <GList heading={'Most Played'} itemData={itemData} />
+                <Divider orientation="vertical" flexItem />
+                <GList heading={'New Releases'} itemData={itemData} />
               </Card>
 
-              {/* Uncomment the block if needed */}
-              {/* <Card
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  width: '100%',
-                  padding: '10px 0 10px 20px',
-                  borderRadius: '15px',
-                }}
-              >
-                <Typography component="div" variant="h5" fontWeight={'bold'}>
-                  Populars
-                </Typography>
-              </Card> */}
-
-              <div className="popular">
-                {itemData.map((item) => (
-                  <Popular key={item.title} item={item} />
-                ))}
-              </div>
             </motion.div>
           )}
         </AnimatePresence>

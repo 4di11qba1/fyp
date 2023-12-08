@@ -1,184 +1,275 @@
-* {
-    padding: 0;
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
+.d-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
-.gc-container {
-    position: relative;
+.align-center {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
-.gc-container .gc-card {
-    position: relative;
-    width: 320px;
-    height: 450px;
-    background: var(--bgInner);
-    border-radius: 20px;
-    overflow: hidden;
-    padding: 15px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
+.flex-centerY-centerX {
+  justify-content: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
-.gc-container .gc-card:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #1BBFE9;
-    clip-path: circle(150px at 80% 20%);
-    transition: 0.5s ease-in-out;
+.page-wrapper {
+  height: 100%;
+  display: table;
 }
 
-.gc-container .gc-card:hover:before {
-    clip-path: circle(300px at 80% -20%);
+.page-wrapper .page-inner {
+  display: table-cell;
+  vertical-align: middle;
 }
 
-.gc-container .gc-card:after {
-    content: var(--title);
-    position: absolute;
-    /* bottom: 0;
-    left: 10%; */
-    font-size: 20px;
-    font-weight: 800;
-    font-style: italic;
-    color: rgba(255, 255, 255, 0.286);
+.el-wrapper {
+  width: 360px;
+  padding: 15px;
+  margin: 15px auto;
+  background-color: var(--bgCardGame);
+  border-radius: 15px;
 }
 
-.gc-container .gc-card .gc-imgBx {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1000;
-    width: 100%;
-    height: 100%;
-    transition: .5s;
+@media (max-width: 991px) {
+  .el-wrapper {
+    width: 345px;
+  }
 }
 
-.gc-container .gc-card:hover .gc-imgBx {
-    top: 0%;
-    transform: translateY(-25%);
-    /* bug  */
+@media (max-width: 767px) {
+  .el-wrapper {
+    width: 290px;
+    margin: 30px auto;
+  }
 }
 
-.gc-container .gc-card .gc-imgBx img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 270px;
-    border-radius: 15px;
+.el-wrapper:hover .h-bg {
+  left: 0px;
 }
 
-.gc-container .gc-card .gc-contentBx {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 100px;
-    text-align: center;
-    transition: 1s;
-    z-index: 90;
+.el-wrapper:hover .gc-price {
+  left: 20px;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  color: white;
 }
 
-.gc-container .gc-card:hover .gc-contentBx {
-    height: 210px;
+.el-wrapper:hover .gc-add-to-cart {
+  left: 50%;
 }
 
-.gc-container .gc-card .gc-contentBx h2 {
-    position: relative;
-    font-weight: 600;
-    letter-spacing: 1px;
-    color: #fff;
+.gc-img {
+    width: 250px;
 }
 
-.gc-container .gc-card .gc-contentBx .gc-size,
-.gc-container .gc-card .gc-contentBx .gc-color {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 8px 20px;
-    transition: .5s;
-    opacity: 0;
-    visibility: hidden;
+.el-wrapper:hover .gc-img {
+  -webkit-filter: blur(7px);
+  -o-filter: blur(7px);
+  -ms-filter: blur(7px);
+  filter: blur(7px);
+  filter: progid:DXImageTransform.Microsoft.Blur(pixelradius='7', shadowopacity='0.0');
+  opacity: 0.4;
 }
 
-.gc-container .gc-card:hover .gc-contentBx .gc-size {
-    opacity: 1;
-    visibility: visible;
-    transition-delay: .5s;
+.el-wrapper:hover .info-inner {
+  bottom: 155px;
 }
 
-.gc-container .gc-card:hover .gc-contentBx .gc-color {
-    opacity: 1;
-    visibility: visible;
-    transition-delay: .6s;
+.el-wrapper:hover .a-size {
+  -webkit-transition-delay: 300ms;
+  -o-transition-delay: 300ms;
+  transition-delay: 300ms;
+  bottom: 50px;
+  opacity: 1;
 }
 
-.gc-container .gc-card .gc-contentBx .gc-size h3,
-.gc-container .gc-card .gc-contentBx .gc-color h3 {
-    color: white;
-    font-weight: 300;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-right: 10px;
+.el-wrapper .box-down {
+  width: 100%;
+  height: 60px;
+  position: relative;
+  overflow: hidden;
 }
 
-.gc-container .gc-card .gc-contentBx .gc-size span {
-    width: 26px;
-    height: 26px;
-    text-align: center;
-    line-height: 26px;
-    font-size: 14px;
-    display: inline-block;
-    color: #111;
-    background: #fff;
-    margin: 0 5px;
-    transition: .5s;
-    color: #111;
-    border-radius: 4px;
-    cursor: pointer;
+.el-wrapper .box-up {
+  width: 100%;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
 }
 
-.gc-container .gc-card .gc-contentBx .gc-size span:hover {  /* other bug */
-    background: #B90000;
+.el-wrapper .gc-img {
+  padding: 20px 0;
+  -webkit-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
+  -moz-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
+  -o-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
+  transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
+  /* ease-out */
+  -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  /* ease-out */
 }
 
-.gc-container .gc-card .gc-contentBx .gc-color span {
-    width: 20px;
-    height: 20px;
-    background: #ff0;
-    border-radius: 50%;
-    margin: 0 5px;
-    cursor: pointer;
+.h-bg {
+  -webkit-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
+  -moz-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
+  -o-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
+  transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
+  /* ease-out */
+  -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  /* ease-out */
+  width: 660px;
+  height: 100%;
+  background-color: var(--txtCardGame);
+  position: absolute;
+  left: -659px;
 }
 
-.gc-container .gc-card .gc-contentBx .gc-color span:nth-child(2) {
-     background: #1BBFE9;
+.h-bg .h-bg-inner {
+  width: 50%;
+  height: 100%;
+  background-color: #464646;
 }
 
-.gc-container .gc-card .gc-contentBx .gc-color span:nth-child(3) {
-     background: #1B2FE9;
+.info-inner {
+  -webkit-transition: all 400ms cubic-bezier(0, 0, 0.18, 1);
+  -moz-transition: all 400ms cubic-bezier(0, 0, 0.18, 1);
+  -o-transition: all 400ms cubic-bezier(0, 0, 0.18, 1);
+  transition: all 400ms cubic-bezier(0, 0, 0.18, 1);
+  /* ease-out */
+  -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  /* ease-out */
+  position: absolute;
+  width: 100%;
+  bottom: 25px;
 }
 
-.gc-container .gc-card .gc-contentBx .gc-color span:nth-child(4) {
-     background: #080481;
+.p-name {
+    background-color: var(--bgCardGame);
 }
 
-.gc-container .gc-card .gc-contentBx .gc-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    margin-top: 10px;
-    opacity: 0;
-    transform: translateY(50px);
-    /* transition: .5s; */
+.info-inner .p-name,
+.info-inner .p-company {
+  display: block;
 }
 
-.gc-container .gc-card:hover .gc-contentBx .gc-btn {
-    opacity: 1;
-    transform: translateY(0px);
-    /* transition-delay: .7s; */
-} 
+.info-inner .p-name {
+  font-size: 18px;
+  color: var(--txtCardGame);
+}
+
+.info-inner .p-company {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--txtCardGame);
+}
+
+.a-size {
+  -webkit-transition: all 300ms cubic-bezier(0, 0, 0.18, 1);
+  -moz-transition: all 300ms cubic-bezier(0, 0, 0.18, 1);
+  -o-transition: all 300ms cubic-bezier(0, 0, 0.18, 1);
+  transition: all 300ms cubic-bezier(0, 0, 0.18, 1);
+  /* ease-out */
+  -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  /* ease-out */
+  position: absolute;
+  width: 100%;
+  bottom: -20px;
+  font-family: 'PT Sans', sans-serif;
+  color: var(--txtCardGame);
+  opacity: 0;
+}
+
+.a-size .gc-size {
+  color: #252525;
+}
+
+.gc-cart {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+}
+
+.gc-cart .gc-price {
+  -webkit-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
+  -moz-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
+  -o-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
+  transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
+  /* ease-out */
+  -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  /* ease-out */
+  -webkit-transition-delay: 100ms;
+  -o-transition-delay: 100ms;
+  transition-delay: 100ms;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  color: var(--txtCardGame);
+}
+
+.gc-cart .gc-add-to-cart {
+  -webkit-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
+  -moz-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
+  -o-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
+  transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
+  /* ease-out */
+  -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  /* ease-out */
+  -webkit-transition-delay: 100ms;
+  -o-transition-delay: 100ms;
+  transition-delay: 100ms;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 110%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.gc-cart .gc-add-to-cart .gc-txt {
+  font-size: 12px;
+  color: #fff;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}

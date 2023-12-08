@@ -1,4 +1,4 @@
-/* .parallexContainer > div > div {
+.parallexContainer > div > div {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -51,4 +51,4 @@
 
 .tomato {
     background: linear-gradient(to right, tomato 0%, gold 100%);
-} */
+}

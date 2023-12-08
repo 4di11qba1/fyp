@@ -12,8 +12,8 @@ export default function Popular({ item }) {
       sx={{
         padding: '20px',
         flexGrow: 1,
-        borderRadius: '15px',
         flexBasis: 345,
+        borderRadius: '15px',
         transition: 'transform 0.5s',
         '&:hover': {
           transform: 'scale(1.05)',
