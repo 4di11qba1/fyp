@@ -273,7 +273,7 @@ export default function MiniDrawer({ windowWidth, lightTheme, darkTheme, darkMod
             </ListItem>
         </List>
       </Drawer>
-      <Box component="main" sx={{ width: '50vw', flexGrow: 1, p: 3, padding: '15px' }}>
+      <Box component="main" sx={{ width: '50vw', flexGrow: 1 }}>
         <DrawerHeader />
 
             <Routes>

@@ -1,18 +1,24 @@
-import { Typography } from "@mui/material";
+import { Typography, IconButton } from "@mui/material";
 import './TopPicks.css';
-import Divider from '@mui/material/Divider';
+import GCard from "./GCard/GCard";
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
-function TopPicks({ heading, itemData }) {
+function TopPicks({ heading, itemData, darkMode, lightTheme, darkTheme }) {
   return (
       <div style={{marginTop: '10px'}}>
-        <Typography component="div" variant="p" fontWeight={'bold'}>
-            {heading}
-        </Typography>
+        <div style={{display: 'flex', justifyContent: 'space-between'}}>
+          <Typography component="div" variant="h6" fontWeight={'bold'}>
+              {heading}
+          </Typography>
+          <IconButton>
+            <ArrowForwardIcon />
+          </IconButton>
+        </div>
         <div className="top-picks">
             {itemData.map((item) => (
                 
                 <>
-                  <img
+                  {/* <img
                     className="top-picks-image"
                     key={item.title}
                     src={item.img}
@@ -20,7 +26,15 @@ function TopPicks({ heading, itemData }) {
                     loading="lazy"
                   />
 
-                  <Divider orientation="vertical" />
+                  <h4>{item.title}</h4>
+                  <Button variant="contained">{item.price}</Button> */}
+
+                  <GCard 
+                    key={item.title} 
+                    item={item}
+                    lightTheme={lightTheme} 
+                    darkTheme={darkTheme} 
+                    darkMode={darkMode} />
                 </>
 
             ))}
