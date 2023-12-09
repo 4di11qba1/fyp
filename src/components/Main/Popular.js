@@ -38,7 +38,9 @@ export default function Popular({ item }) {
       <CardActions sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
         <div style={{display: 'flex', alignItems: 'center', gap: '5px'}}>
             <StarBorderOutlinedIcon />
-            Popular
+            <Typography variant="h6" fontWeight={'bold'} noWrap component="div">
+              {item.rating}
+            </Typography>
         </div>
         <Button variant='contained' size="medium">{item.price}</Button>
       </CardActions>

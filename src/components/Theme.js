@@ -55,12 +55,12 @@ export const darkTheme = createTheme({
     palette: {
         mode: 'dark',
         primary: {
-            main: '#050505',
+            main: '#000000',
             text: '#ffffff'
         },
         background: {
             default: '#2e2e2e',
-            paper: '#050505'
+            paper: '#000000'
         }
     },
     components: {
