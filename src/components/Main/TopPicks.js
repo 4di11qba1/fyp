@@ -18,17 +18,6 @@ function TopPicks({ heading, darkMode, lightTheme, darkTheme }) {
             {itemData.map((item) => (
                 
                 <>
-                  {/* <img
-                    className="top-picks-image"
-                    key={item.title}
-                    src={item.img}
-                    alt={item.title}
-                    loading="lazy"
-                  />
-
-                  <h4>{item.title}</h4>
-                  <Button variant="contained">{item.price}</Button> */}
-
                   <GCard 
                     key={item.title} 
                     item={item}

@@ -8,7 +8,7 @@ import LandingText from "../LandingText/LandingText";
 import LandingTransition from "../LandingTransition/LandingTransition";
 import GList from "./GList";
 import Popular from './Popular.js';
-import Footer from "../Footer.js";
+import Footer from '../Footer/Footer.js';
 
 function Main({ darkTheme, lightTheme, darkMode, windowWidth }) {
   const [showLandingText, setShowLandingText] = useState(true);
@@ -86,7 +86,7 @@ function Main({ darkTheme, lightTheme, darkMode, windowWidth }) {
 
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '15px', borderRadius: '15px' }}>
                 {itemData.slice(0, 3).map((item, index) => (
-                  <Popular item={item} />
+                  <Popular key={index} item={item} />
                 ))}
               </div>
 
@@ -94,7 +94,7 @@ function Main({ darkTheme, lightTheme, darkMode, windowWidth }) {
           )}
         </AnimatePresence>
 
-        <Footer />
+        <Footer darkMode={darkMode} />
       </div>
     </motion.div>
   );
