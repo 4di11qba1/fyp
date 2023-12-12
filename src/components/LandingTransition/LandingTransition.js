@@ -2,17 +2,31 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import './LandingTransition.css';
 import { Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { lightTheme, darkTheme } from '../Theme';
 
-function LandingTransition() {
-  const [startAnimation, setStartAnimation] = useState(false);
+function LandingTransition({darkMode}) {
+  const [styles, setStyles] = useState({
+    '--bg-color': darkMode ? darkTheme.palette.background.paper : lightTheme.palette.background.paper,
+    '--txt-color': darkMode ? darkTheme.palette.primary.text : lightTheme.palette.primary.text
+  });
 
   useEffect(() => {
-    // Delay the start of animations by 2000 milliseconds (adjust as needed)
+    setStyles({
+      '--bg-color': darkMode ? darkTheme.palette.background.paper : lightTheme.palette.background.paper,
+      '--txt-color': darkMode ? darkTheme.palette.primary.text : lightTheme.palette.primary.text
+    });
+  }, [darkMode]);
+
+  const [startAnimation, setStartAnimation] = useState(false);
+  const nav = useNavigate();
+
+  useEffect(() => {
+    
     const timeoutId = setTimeout(() => {
       setStartAnimation(true);
     }, 2000);
 
-    // Clear timeout on component unmount
     return () => {
       clearTimeout(timeoutId);
     };
@@ -21,7 +35,7 @@ function LandingTransition() {
   return (
     <>
       {startAnimation && 
-        <div className='ltrans-outer'>
+        <div className='ltrans-outer' style={styles}>
           <div className= 'ltrans-container'>
             <div className="ltrans-container-content">
             <div className="ltrans-container-content-inner">
@@ -35,14 +49,15 @@ function LandingTransition() {
             </div>
             <div className="ltrans-btns">
               <div className='ltrans-btns-more'>
-                <Button variant="contained"> See More </Button>
+                <Button variant="contained" onClick={() => nav('/store')}> Go to Store </Button>
               </div>
             </div>
             </div>
             </div>
             <div className="ltrans-container-outer-img">
               <div className="ltrans-img-inner">
-                <img src='/img/games/batman.png'  alt="" className="ltrans-container-img"/>
+                <img src='/img/landing-img.jpg'  alt="" className="ltrans-container-img"/>
+                
               </div>
             </div>
           </div>

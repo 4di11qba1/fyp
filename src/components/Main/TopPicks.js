@@ -1,6 +1,6 @@
 import { Typography, IconButton } from "@mui/material";
 import './TopPicks.css';
-import GCard from "./GCard/GCard";
+import GCard from "../GCard/GCard";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 function TopPicks({ heading, darkMode, lightTheme, darkTheme }) {

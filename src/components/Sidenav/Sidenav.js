@@ -18,14 +18,11 @@ import ListItemText from '@mui/material/ListItemText';
 import { Home } from '@mui/icons-material';
 import { Login, Logout, AppRegistration } from '@mui/icons-material';
 import { LightMode, DarkMode } from '@mui/icons-material';
-import { useNavigate } from 'react-router-dom';
-import SignIn from '../SignIn/SignIn';
-import SignUp from '../SignUp/SignUp';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+// import { Route, Routes } from 'react-router-dom';
 import PersonIcon from '@mui/icons-material/Person';
 import './Sidenav.css';
 import Searchbar from '../Searchbar/Searchbar';
-import Test from '../Test/Test';
 import Main from '../Main/Main';
 
 const drawerWidth = 240;
@@ -136,7 +133,7 @@ export default function MiniDrawer({ windowWidth, lightTheme, darkTheme, darkMod
           <div style={{display: 'flex', width: '100%', justifyContent: 'space-between', alignItems: 'center'}}>
 
             <Typography variant="h6" noWrap component="div">
-              Gamer's Utopia
+              Store
             </Typography>
             <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
               <Searchbar lightTheme={lightTheme} darkTheme={darkTheme} darkMode={darkMode} />
@@ -154,7 +151,7 @@ export default function MiniDrawer({ windowWidth, lightTheme, darkTheme, darkMod
         </DrawerHeader>
         <Divider />
         <List>
-          <ListItem disablePadding sx={{ display: 'block' }} onClick={() => navigateTo('/')}>
+          <ListItem disablePadding sx={{ display: 'block' }} onClick={() => navigateTo('/store')}>
             <ListItemButton
               sx={{
                 minHeight: 48,
@@ -250,7 +247,7 @@ export default function MiniDrawer({ windowWidth, lightTheme, darkTheme, darkMod
             </List>
         <Divider />
         <List>
-          <ListItem disablePadding sx={{ display: 'block' }} onClick={() => navigateTo('/test')}>
+          <ListItem disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -276,17 +273,11 @@ export default function MiniDrawer({ windowWidth, lightTheme, darkTheme, darkMod
       <Box component="main" sx={{ width: '50vw', flexGrow: 1 }}>
         <DrawerHeader />
 
-            <Routes>
-                <Route exact path="/signin" element={<SignIn windowWidth={windowWidth} />} />
-                <Route exact path="/signup" element={<SignUp windowWidth={windowWidth} />} />
-                <Route exact path="/test" element={<Test windowWidth={windowWidth} />} />
-                
-                <Route exact path="/" element={
-                  <>
-                    <Main lightTheme={lightTheme} darkTheme={darkTheme} darkMode={darkMode} windowWidth={windowWidth} />
-                  </>  
-                } />
-            </Routes>
+          <Main lightTheme={lightTheme} 
+                darkTheme={darkTheme} 
+                darkMode={darkMode} 
+                windowWidth={windowWidth} 
+          />
 
       </Box>
     </Box>

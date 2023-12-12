@@ -28,10 +28,10 @@ export default function Popular({ item }) {
         sx={{borderRadius: '15px'}}
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="h6" component="div">
           {item.title}
         </Typography>
-        <Typography variant="body2" color="text.secondary" sx={{minHeight: '60px'}}>
+        <Typography variant="body2" color="text.secondary" sx={{height: '63px', overflowY: 'auto'}}>
           {item.desc}
         </Typography>
       </CardContent>

@@ -1,29 +1,13 @@
 import { Card, Divider } from "@mui/material";
 import TopPicks from "./TopPicks";
-import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from 'framer-motion';
 import Carousel from "./Carousel/Carousel";
 import MobileCarousel from "./Carousel/MobileCarousel/MobileCarousel";
-import LandingText from "../LandingText/LandingText";
-import LandingTransition from "../LandingTransition/LandingTransition";
 import GList from "./GList";
-import Popular from './Popular.js';
-import Footer from '../Footer/Footer.js';
+import Popular from '../Popular.js';
+import LandingCards from "./LandingCards/LandingCards.js";
 
 function Main({ darkTheme, lightTheme, darkMode, windowWidth }) {
-  const [showLandingText, setShowLandingText] = useState(true);
-
-  useEffect(() => {
-    // Hide landing text after a delay (adjust the delay as needed)
-    const timeoutId = setTimeout(() => {
-      setShowLandingText(false);
-    }, 4000);
-
-    return () => {
-      // Clear timeout on component unmount
-      clearTimeout(timeoutId);
-    };
-  }, []);
 
   return (
     <motion.div
@@ -32,31 +16,33 @@ function Main({ darkTheme, lightTheme, darkMode, windowWidth }) {
       transition={{ duration: 0.25 }}
     >
       <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-        <AnimatePresence>
-          {showLandingText && (
-            <motion.div
-              key="landingText"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1.5 }}
-            >
-              <LandingText />
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {!showLandingText && <LandingTransition />}
 
         <AnimatePresence>   
-          {!showLandingText && (
+          
             <motion.div
               key="mainBody"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 2 }}
+              transition={{ duration: 1 }}
               style={{display: 'flex', flexDirection: 'column', padding: '15px', gap: '15px'}}
             >
+
+              <TopPicks 
+                  heading={'Handpicked for You.'} 
+                  itemData={itemData} 
+                  lightTheme={lightTheme} 
+                  darkTheme={darkTheme} 
+                  darkMode={darkMode} 
+              />
+
+              <LandingCards itemData={itemData} />
+
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '15px', borderRadius: '15px' }}>
+                {itemData.slice(0, 3).map((item, index) => (
+                  <Popular key={index} item={item} />
+                ))}
+              </div>
+
               {windowWidth > 1000 ? (
                 <Carousel
                   lightTheme={lightTheme}
@@ -69,13 +55,6 @@ function Main({ darkTheme, lightTheme, darkMode, windowWidth }) {
                 <MobileCarousel />
               )}
 
-              <TopPicks 
-                  heading={'Favorites'} 
-                  itemData={itemData} 
-                  lightTheme={lightTheme} 
-                  darkTheme={darkTheme} 
-                  darkMode={darkMode} />
-
               <Card sx={{ display: 'flex', flexWrap: 'wrap', gap: '15px', minHeight: '300px', padding: '25px', borderRadius: '15px' }}>
                 <GList heading={'Top Sellers'} itemData={itemData} />
                 <Divider orientation="vertical" flexItem />
@@ -84,17 +63,9 @@ function Main({ darkTheme, lightTheme, darkMode, windowWidth }) {
                 <GList heading={'New Releases'} itemData={itemData} />
               </Card>
 
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '15px', borderRadius: '15px' }}>
-                {itemData.slice(0, 3).map((item, index) => (
-                  <Popular key={index} item={item} />
-                ))}
-              </div>
-
             </motion.div>
-          )}
+            
         </AnimatePresence>
-
-        <Footer darkMode={darkMode} />
       </div>
     </motion.div>
   );
