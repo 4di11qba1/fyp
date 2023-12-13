@@ -6,6 +6,9 @@ import SignIn from './components/SignIn/SignIn.js';
 import SignUp from './components/SignUp/SignUp.js';
 import { MyThemeProvider, lightTheme, darkTheme } from './components/Theme.js';
 import Welcome from './components/Welcome/Welcome.js';
+import Navbar from './components/Navbar.js';
+import About from './components/About/About.js';
+import Footer from './components/Footer/Footer.js';
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -41,9 +44,14 @@ function App() {
       <MyThemeProvider darkMode={darkMode}>
         <AnimatePresence>
           <Router>
+            <Navbar
+              darkMode={darkMode}
+              changeMode={changeMode}
+            />
             <Routes>
               <Route exact path="/signin" element={<SignIn windowWidth={windowWidth} />} />
               <Route exact path="/signup" element={<SignUp windowWidth={windowWidth} />} />
+              <Route exact path="/about" element={<About windowWidth={windowWidth} />} />
               <Route exact path="/store" element={
                 <Sidenav
                   windowWidth={windowWidth}
@@ -67,6 +75,8 @@ function App() {
                 />
               } />
             </Routes>
+
+            <Footer />
           </Router>
         </AnimatePresence>
       </MyThemeProvider>

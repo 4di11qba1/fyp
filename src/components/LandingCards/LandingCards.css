@@ -6,8 +6,8 @@
 }
 
 .lc-wrapper {
-    width: 93.5vw;
-    height: 50vw;
+    width: 100vw;
+    height: 60vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -80,8 +80,20 @@
     display: none;
 }
 
-.lc-input:checked + label {
-    width: 600px;
+@media screen and (min-width: 1000px) {
+    .lc-input:checked + label {
+        width: 600px;
+    }
+}
+
+@media screen and (min-width: 300px) and (max-width: 999px) {
+    .lc-container {
+        margin-left: 330px;
+    }
+    
+    .lc-input:checked + label {
+        width: 80vw;
+    }
 }
 
 .lc-input:checked + label .lc-description {

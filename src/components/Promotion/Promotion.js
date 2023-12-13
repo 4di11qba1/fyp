@@ -13,13 +13,14 @@ function Promotion({img, heading, paragraph}) {
         backgroundSize: 'cover', 
         backgroundPosition: 'center', 
         backgroundRepeat: 'no-repeat', 
-        width: '100vw', 
-        height: '80vh', 
+        width: '100%', 
+        height: '50vh', 
+        borderRadius: '15px',
         textShadow: '4px 4px 8px #000000'
     }
   return (
     <div style={styles}>
-        <div style={{display: 'flex', flexDirection: 'column', gap: '20px', width: '400px', textAlign: 'center'}}>
+        <div style={{display: 'flex', flexDirection: 'column', gap: '20px', width: '40%', textAlign: 'center'}}>
             <Typography component="div" variant="h4" sx={{color: 'white'}}>
                 {heading}
             </Typography>

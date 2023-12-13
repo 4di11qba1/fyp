@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './LandingCards.css';
 
-function LandingCards({ itemData }) {
-  const [checkedIndex, setCheckedIndex] = useState(null);
+function LandingCards({ itemData, windowWidth }) {
+  const [checkedIndex, setCheckedIndex] = useState(windowWidth > 700 ? 2 : 0);
 
   const handleInputChange = (index) => {
     setCheckedIndex(index === checkedIndex ? null : index);
@@ -10,9 +10,9 @@ function LandingCards({ itemData }) {
 
   return (
     <div>
-      <div className="lc-wrapper" style={{ paddingLeft: checkedIndex !== null ? '150px' : '0' }}>
+      <div className="lc-wrapper">
         <div className="lc-container">
-          {itemData.map((item, index) => (
+          {itemData.slice(0, 5).map((item, index) => (
             <React.Fragment key={index}>
               <input
                 className="lc-input"
@@ -25,7 +25,10 @@ function LandingCards({ itemData }) {
               <label
                 className="lc-label lc-card"
                 htmlFor={`c${index + 1}`}
-                style={{ backgroundImage: `url(${item.img})` }}
+                style={{
+                  backgroundImage: `url(${item.img})`,
+                  backgroundPosition: 'center'
+                }}
               >
                 <div className="lc-row">
                   <div className="lc-icon">{item.title.slice(0, 1)}</div>

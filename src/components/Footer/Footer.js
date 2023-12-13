@@ -17,14 +17,14 @@ function Footer({darkMode}) {
       minHeight: '100px',
       padding: '20px 50px',
     }}>
-      <div style={{flexGrow: 1}}>
+      {/* <div style={{flexGrow: 1}}>
         <Typography component="div" variant="h5">
               Gamer's Utopia
         </Typography>
         <Typography component="div" variant="p" width={300} marginTop={3}>
           Our Aim: Provide the gaming enthusiats with the best possible platform in existence.
         </Typography>
-      </div>
+      </div> */}
       <div style={{
         display: 'flex',
         alignItems: 'center',
@@ -43,7 +43,7 @@ function Footer({darkMode}) {
           <ul className='footer-menu'>
             <li><a href="www.google.com">Home</a></li>
             <Divider orientation="vertical" flexItem />
-            <li><a href="www.google.com">About</a></li>
+            <li><a href="/about">About</a></li>
             <Divider orientation="vertical" flexItem />
             <li><a href="www.google.com">Services</a></li>
             <Divider orientation="vertical" flexItem />

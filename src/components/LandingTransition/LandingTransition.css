@@ -27,6 +27,18 @@
     transition: all .8s ease;
 }
 
+@media screen and (max-width: 700px) {
+    .ltrans-container {
+        flex-direction: column;
+    }
+    .ltrans-container-content {
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
 .ltrans-container-content {
     width: 50%;
 }

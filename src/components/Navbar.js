@@ -9,6 +9,7 @@ import Slide from '@mui/material/Slide';
 import Person from '@mui/icons-material/Person';
 import { IconButton } from '@mui/material';
 import { LightMode, DarkMode } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 
 function HideOnScroll(props) {
   const { children } = props;
@@ -27,6 +28,8 @@ HideOnScroll.propTypes = {
 
 export default function Navbar({darkMode, changeMode, windowWidth}) {
     const props = 1;
+    const nav = useNavigate();
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -45,7 +48,7 @@ export default function Navbar({darkMode, changeMode, windowWidth}) {
             </div>
 
             <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px'}}>
-                <IconButton color="inherit">
+                <IconButton color="inherit" onClick={() => nav('/signin')}>
                     <Person />
                 </IconButton>
 

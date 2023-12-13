@@ -5,7 +5,7 @@ import Carousel from "./Carousel/Carousel";
 import MobileCarousel from "./Carousel/MobileCarousel/MobileCarousel";
 import GList from "./GList";
 import Popular from '../Popular.js';
-import LandingCards from "./LandingCards/LandingCards.js";
+import LandingCards from "../LandingCards/LandingCards.js";
 
 function Main({ darkTheme, lightTheme, darkMode, windowWidth }) {
 
