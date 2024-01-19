@@ -1,14 +1,14 @@
 import { Typography, IconButton, Divider } from '@mui/material';
 import React from 'react';
 
-function AboutCard({heading, desc, icon, footing}) {
+function AboutCard({heading, desc, icon, footing, divide}) {
     const styles = {
         display: 'flex',
         flexDirection: 'column',
         // justifyContent: 'center',
         alignItems: 'center',
         flexGrow: 1,
-        flexBasis: '345px',
+        flexBasis: '345px'
     }
   return (
     <div style={styles}>
@@ -25,7 +25,7 @@ function AboutCard({heading, desc, icon, footing}) {
         <Typography component="div" variant='h6' sx={{textAlign: 'center'}}>
             {footing}
         </Typography>
-        <Divider flexItem />
+        {divide && <Divider flexItem />}
     </div>
   )
 }

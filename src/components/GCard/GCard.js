@@ -19,7 +19,7 @@ function GCard({item, darkMode}) {
                         <div className="gc-img-info">
                             <div className="info-inner">
                             <span className="p-name"><Card>{item.title}</Card></span>
-                            <span className="p-company">{item.genre}</span>
+                            <span className="p-company"></span>
                             </div>
                             <div className="a-size">{item.desc}</div>
                         </div>
@@ -31,7 +31,7 @@ function GCard({item, darkMode}) {
                         </div>
 
                         <a className="gc-cart" href="www.google.com">
-                            <span className="gc-price">{item.price}</span>
+                            <span className="gc-price">{item.genre}</span>
                             <span className="gc-add-to-cart">
                             <span className="gc-txt">See More</span>
                             </span>

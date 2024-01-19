@@ -19,11 +19,14 @@ import { Home } from '@mui/icons-material';
 import { Login, Logout, AppRegistration } from '@mui/icons-material';
 import { LightMode, DarkMode } from '@mui/icons-material';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 // import { Route, Routes } from 'react-router-dom';
 import PersonIcon from '@mui/icons-material/Person';
 import './Sidenav.css';
 import Searchbar from '../Searchbar/Searchbar';
 import Main from '../Main/Main';
+import { Route, Routes } from 'react-router-dom';
+import Game from '../Game/Game';
 
 const drawerWidth = 240;
 
@@ -112,6 +115,22 @@ export default function MiniDrawer({ windowWidth, lightTheme, darkTheme, darkMod
   const navigateTo = (url) => {
     nav(url)
   }
+
+  useEffect(() => {
+    const handleLoad = () => {
+      const elements = document.getElementsByClassName('css-1r9jet7');
+      for (let i = 0; i < elements.length; i++) {
+        elements[i].style.display = 'none';
+      }
+    };
+  
+    window.onload = handleLoad;
+  
+    // Clean up the event listener when the component is unmounted
+    return () => {
+      window.onload = null;
+    };
+  })
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -272,13 +291,16 @@ export default function MiniDrawer({ windowWidth, lightTheme, darkTheme, darkMod
       </Drawer>
       <Box component="main" sx={{ width: '50vw', flexGrow: 1 }}>
         <DrawerHeader />
-
-          <Main lightTheme={lightTheme} 
+        <Routes>
+          <Route exact path="/" element={
+            <Main lightTheme={lightTheme} 
                 darkTheme={darkTheme} 
                 darkMode={darkMode} 
                 windowWidth={windowWidth} 
+            />} 
           />
-
+          <Route path="/game" element={<Game windowWidth={windowWidth} />} />
+        </Routes>
       </Box>
     </Box>
   );

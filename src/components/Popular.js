@@ -5,8 +5,10 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
+import { useNavigate } from 'react-router-dom';
 
 export default function Popular({ item }) {
+  const nav = useNavigate();
   return (
     <Card
       sx={{
@@ -42,7 +44,7 @@ export default function Popular({ item }) {
               {item.rating}
             </Typography>
         </div>
-        <Button variant='contained' size="medium">{item.price}</Button>
+        <Button variant='contained' size="medium" onClick={() => nav('/store/game')}>See More</Button>
       </CardActions>
     </Card>
   );

@@ -52,7 +52,7 @@ function App() {
               <Route exact path="/signin" element={<SignIn windowWidth={windowWidth} />} />
               <Route exact path="/signup" element={<SignUp windowWidth={windowWidth} />} />
               <Route exact path="/about" element={<About windowWidth={windowWidth} />} />
-              <Route exact path="/store" element={
+              <Route exact path="/store/*" element={
                 <Sidenav
                   windowWidth={windowWidth}
                   lightTheme={lightTheme}
@@ -167,30 +167,35 @@ const itemDataV = [
     img: '/img/games/batman-vertical.jpg',
     title: 'Batman Arkham Knight',
     desc: 'Batman: Arkham Knight is a 2015 action-adventure game developed by Rocksteady Studios and published by Warner Bros. Interactive Entertainment.',
+    genre: 'Action',
     price: '$69.99'
   },
   {
     img: '/img/games/gtav-vertical.jpg',
     title: 'Grand Theft Auto V',
     desc: 'Grand Theft Auto V is a 2013 action-adventure game developed by Rockstar North and published by Rockstar Games. It is the seventh main entry in the Grand Theft Auto series.',
+    genre: 'Open World',
     price: '$69.99'
   },
   {
     img: '/img/games/mirage-vertical.jpg',
     title: 'Assassins Creed Mirage',
     desc: 'Counter-Strike 2 is a 2023 multiplayer tactical first-person shooter game developed and published by Valve. It is the fifth main installment of the Counter-Strike series.',
+    genre: 'Stealth',
     price: '$69.99'
   },
   {
     img: '/img/games/nfs-vertical.jpg',
     title: 'Need for Speed Heat',
     desc: 'The sequel to 2018 The Crew 2 and the third game in The Crew series, and was released on September 14, 2023.',
+    genre: 'Racing',
     price: '$69.99'
   },
   {
     img: '/img/games/cod-vertical.jpg',
     title: 'Call of Duty Modern Warfare 2',
     desc: 'A sequel to 2022 Modern Warfare II, serving as the third entry in the rebooted Modern Warfare sub-series and the twentieth installment in the overall Call of Duty series.',
+    genre: 'FPS',
     price: '$69.99'
   },
 ]
