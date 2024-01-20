@@ -5,16 +5,38 @@ import Popular from '../Popular'
 import GameRequirements from './GameRequirements'
 import React from 'react'
 import { Divider, Typography } from '@mui/material'
+import AllRating from './AllRating'
+import CircularRating from './CircularRating/CircularRating'
 
 function Game({windowWidth}) {
   return (
     <div style={{display: 'flex', flexDirection: 'column', gap: '15px', width: '100%', padding: '15px'}}>
+
         <GameHead windowWidth={windowWidth} />
-        <div style={{display: 'flex', gap: '15px'}}>
+        
+        <div style={{display: 'flex', gap: '15px', flexDirection: windowWidth < 700 && 'column'}}>
             <GameAbout windowWidth={windowWidth} />
             <GamePrice windowWidth={windowWidth} />
         </div>
+
+        <Divider flexItem />
+        <Typography component="div" variant="h4" textAlign={'center'}>
+            Rating
+        </Typography>
+        <Divider flexItem />
+        <AllRating windowWidth={windowWidth} />
+        <div style={{display: 'flex', padding: '15px', flexWrap: 'wrap'}}>
+          <CircularRating windowWidth={windowWidth} category={'User Ratings'} ratingValue={'85'} />
+          <CircularRating windowWidth={windowWidth} category={'Overall Ratings'} ratingValue={'95'} />
+        </div>
+        
+        <Divider flexItem />
+        <Typography component="div" variant="h4" textAlign={'center'}>
+            System Requirements
+        </Typography>
+        <Divider flexItem />
         <GameRequirements windowWidth={windowWidth} />
+        
         <Divider flexItem />
         <Typography component="div" variant="h4" textAlign={'center'}>
             More Like This
@@ -25,6 +47,7 @@ function Game({windowWidth}) {
                 return <Popular key={index} item={item} />
             })}
         </div>
+
     </div>
   )
 }

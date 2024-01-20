@@ -52,15 +52,7 @@
 .hoveredCard:hover h2 {
 	inset: auto auto 220px 30px;
 	transition: inset 0.3s ease-out;
-	/* backdrop-filter: blur(50px);
-	padding: 0 5px 0 5px;
-	border-radius: 10px; */
 }
-/* .hoveredCard:hover p {
-	backdrop-filter: blur(50px);
-	padding: 0 5px 0 5px;
-	border-radius: 10px;
-} */
 .hoveredCard:hover p, .hoveredCard:hover a {
 	opacity: 1;
 	transition: opacity 0.5s 0.1s ease-in;
@@ -69,3 +61,22 @@
 	transition: opacity 0.3s ease-in;
 	opacity: 1;
 }
+
+
+
+.hoveredCard.hoverable h2 {
+	inset: auto auto 150px 30px;
+	transition: inset 0.3s ease-out;
+  }
+  
+  .hoveredCard.hoverable p,
+  .hoveredCard.hoverable a {
+	opacity: 1;
+	transition: opacity 0.5s 0.1s ease-in;
+  }
+  
+  .hoveredCard.hoverable img {
+	transition: opacity 0.3s ease-in;
+	opacity: 1;
+  }
+  

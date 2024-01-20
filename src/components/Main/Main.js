@@ -6,6 +6,8 @@ import MobileCarousel from "./Carousel/MobileCarousel/MobileCarousel";
 import GList from "./GList";
 import Popular from '../Popular.js';
 import LandingCards from "../LandingCards/LandingCards.js";
+import HoveredCard from "./HoveredCard/HoveredCard.js";
+import MainCarousel from "./MainCarousel/MainCarousel.js";
 
 function Main({ darkTheme, lightTheme, darkMode, windowWidth }) {
 
@@ -27,41 +29,7 @@ function Main({ darkTheme, lightTheme, darkMode, windowWidth }) {
               style={{display: 'flex', flexDirection: 'column', padding: '15px', gap: '15px'}}
             >
 
-              <TopPicks 
-                  heading={'Handpicked for You.'} 
-                  itemData={itemData} 
-                  lightTheme={lightTheme} 
-                  darkTheme={darkTheme} 
-                  darkMode={darkMode} 
-              />
-
-              <LandingCards itemData={itemData} />
-
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '15px', borderRadius: '15px' }}>
-                {itemData.slice(0, 3).map((item, index) => (
-                  <Popular key={index} item={item} />
-                ))}
-              </div>
-
-              {windowWidth > 1000 ? (
-                <Carousel
-                  lightTheme={lightTheme}
-                  darkTheme={darkTheme}
-                  darkMode={darkMode}
-                  itemData={itemData}
-                  windowWidth={windowWidth}
-                />
-              ) : (
-                <MobileCarousel />
-              )}
-
-              <Card sx={{ display: 'flex', flexWrap: 'wrap', gap: '15px', minHeight: '300px', padding: '25px', borderRadius: '15px' }}>
-                <GList heading={'Top Sellers'} itemData={itemData} />
-                <Divider orientation="vertical" flexItem />
-                <GList heading={'Most Played'} itemData={itemData} />
-                <Divider orientation="vertical" flexItem />
-                <GList heading={'New Releases'} itemData={itemData} />
-              </Card>
+              <MainCarousel windowWidth={windowWidth} itemData={itemData.slice(0, 8)} />
 
             </motion.div>
             
@@ -149,3 +117,47 @@ const itemData = [
     rating: '4.8'
   }
 ];
+
+
+
+
+
+
+
+{/* <TopPicks 
+                  heading={'Handpicked for You.'} 
+                  itemData={itemData} 
+                  lightTheme={lightTheme} 
+                  darkTheme={darkTheme} 
+                  darkMode={darkMode} 
+              />
+
+              <LandingCards itemData={itemData} />
+
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '15px', borderRadius: '15px' }}>
+                {itemData.slice(0, 3).map((item, index) => (
+                  <Popular key={index} item={item} />
+                ))}
+              </div>
+
+              {windowWidth > 1000 ? (
+                <Carousel
+                  lightTheme={lightTheme}
+                  darkTheme={darkTheme}
+                  darkMode={darkMode}
+                  itemData={itemData}
+                  windowWidth={windowWidth}
+                />
+              ) : (
+                <MobileCarousel />
+              )}
+
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', gap: '15px', minHeight: '300px', padding: '25px', borderRadius: '15px' }}>
+                <GList heading={'Top Sellers'} itemData={itemData} />
+                <Divider orientation="vertical" flexItem />
+                <GList heading={'Most Played'} itemData={itemData} /> 
+                <Divider orientation="vertical" flexItem />
+                <GList heading={'New Releases'} itemData={itemData} />
+              </div>
+            
+            */}

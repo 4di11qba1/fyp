@@ -22,6 +22,15 @@ export const lightTheme = createTheme({
                 },
             },
         },
+        MuiListItem: {
+            styleOverrides: {
+                root: {
+                    '&:active': {
+                    backgroundColor: '#d6d6d6',
+                    },
+                },
+            },
+        },
         MuiCard: {
             styleOverrides: {
                 root: {

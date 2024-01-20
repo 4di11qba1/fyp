@@ -8,20 +8,14 @@ import React from 'react'
 
 function GameHead({windowWidth}) {
   return (
-    <Card sx={{ display: 'flex', gap: '25px', padding: '25px', borderRadius: '15px', transition: 'all 1s'}}>
+    <Card sx={{ display: 'flex', flexDirection: windowWidth < 700 && 'column', gap: '25px', padding: '25px', borderRadius: '15px', transition: 'all 1s'}}>
         
-        { 
-            (windowWidth > 750) ?
-                <>
-                    <CardMedia
-                        component="img"
-                        sx={{ width: 900, borderRadius: '15px' }}
-                        image="/img/games/ffxv-gameplay.png"
-                        alt="Final Fantasy XV"
-                    />
-                </>
-                : null
-        }
+        <CardMedia
+            component="img"
+            sx={{ width: windowWidth < 700 ? '100%' : '65vw', borderRadius: '15px' }}
+            image="/img/games/ffxv-gameplay.png"
+            alt="Final Fantasy XV"
+        />
 
         <CardContent sx={{
             gap: '15px',

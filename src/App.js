@@ -9,6 +9,7 @@ import Welcome from './components/Welcome/Welcome.js';
 import Navbar from './components/Navbar.js';
 import About from './components/About/About.js';
 import Footer from './components/Footer/Footer.js';
+import './App.css';
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
