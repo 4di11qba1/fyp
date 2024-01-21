@@ -16,8 +16,8 @@ function HoveredCard({ item, h2, w, h, showDetail }) {
           <p>
             {item.desc}
           </p>
-          <a href="www.google.com" className="button">
-            <Button variant='contained' size="medium">{item.price}</Button>
+          <a href="/store/game" className="button">
+            <Button variant='contained' size="medium">See More</Button>
           </a>
         </div>
       </div>

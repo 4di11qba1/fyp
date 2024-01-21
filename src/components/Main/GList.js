@@ -7,8 +7,10 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import { IconButton, Typography } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { useNavigate } from 'react-router-dom';
 
 export default function GList({ heading, itemData }) {
+  const nav = useNavigate();
   return (
     <div style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden', maxHeight: '320px', flexGrow: 1 }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', position: 'sticky', top: 0, zIndex: 1, padding: '10px' }}>
@@ -22,13 +24,13 @@ export default function GList({ heading, itemData }) {
       <List sx={{ width: '100%', overflowY: 'auto', flex: 1 }}>
         {itemData.map((item, index) => (
           <React.Fragment key={index}>
-            <ListItem alignItems="flex-start">
+            <ListItem alignItems="flex-start" className='hoverableElement' sx={{borderRadius: '15px'}} onClick={() => nav('/store/game')}>
               <ListItemAvatar>
                 <Avatar alt={item.title} src={item.img} />
               </ListItemAvatar>
               <ListItemText
                 primary={item.title}
-                secondary={item.price}
+                secondary={item.genre}
               />
             </ListItem>
             {index < itemData.length - 1 && <Divider variant="inset" component="li" />}

@@ -1,4 +1,4 @@
-import { Card, Divider } from "@mui/material";
+import { Card, Divider, Typography } from "@mui/material";
 import TopPicks from "./TopPicks";
 import { AnimatePresence, motion } from 'framer-motion';
 import Carousel from "./Carousel/Carousel";
@@ -8,6 +8,9 @@ import Popular from '../Popular.js';
 import LandingCards from "../LandingCards/LandingCards.js";
 import HoveredCard from "./HoveredCard/HoveredCard.js";
 import MainCarousel from "./MainCarousel/MainCarousel.js";
+import GItem from "./GItem/GItem.js";
+import {IconButton} from "@mui/material";
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 function Main({ darkTheme, lightTheme, darkMode, windowWidth }) {
 
@@ -30,6 +33,34 @@ function Main({ darkTheme, lightTheme, darkMode, windowWidth }) {
             >
 
               <MainCarousel windowWidth={windowWidth} itemData={itemData.slice(0, 8)} />
+
+              <Card sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', gap: '15px', minHeight: '300px', padding: '25px', borderRadius: '15px' }}>
+                <GList heading={'Top Sellers'} itemData={itemData} />
+                <Divider orientation="vertical" flexItem />
+                <GList heading={'Most Played'} itemData={itemData} /> 
+                <Divider orientation="vertical" flexItem />
+                <GList heading={'New Releases'} itemData={itemData} />
+              </Card>
+
+              {/* <div style={{ display: 'flex', flexWrap: 'wrap', gap: '15px', borderRadius: '15px' }}>
+                {itemData.slice(0, 3).map((item, index) => (
+                  <Popular key={index} item={item} />
+                ))}
+              </div> */}
+
+              <Card sx={{display: 'flex', flexWrap: 'wrap', padding: '25px', borderRadius: '15px', gap: '25px'}}>
+                <div style={{display: 'flex', width: '100%', justifyContent: 'space-between'}}>
+                  <Typography component="div" variant="h5">
+                    Based on your recent activity
+                  </Typography>
+                  <IconButton>
+                      <ArrowForwardIcon />
+                  </IconButton>
+                </div>
+                {itemData.map((item, index) => (
+                    <GItem key={index} item={item} />
+                  ))}
+              </Card>
 
             </motion.div>
             

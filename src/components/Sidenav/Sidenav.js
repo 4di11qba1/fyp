@@ -117,19 +117,10 @@ export default function MiniDrawer({ windowWidth, lightTheme, darkTheme, darkMod
   }
 
   useEffect(() => {
-    const handleLoad = () => {
-      const elements = document.getElementsByClassName('css-1r9jet7');
+    const elements = document.getElementsByClassName('css-1r9jet7');
       for (let i = 0; i < elements.length; i++) {
         elements[i].style.display = 'none';
       }
-    };
-  
-    window.onload = handleLoad;
-  
-    // Clean up the event listener when the component is unmounted
-    return () => {
-      window.onload = null;
-    };
   })
 
   return (
@@ -156,7 +147,13 @@ export default function MiniDrawer({ windowWidth, lightTheme, darkTheme, darkMod
             </Typography>
             <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
               <Searchbar lightTheme={lightTheme} darkTheme={darkTheme} darkMode={darkMode} />
-              <PersonIcon />
+              <IconButton color="inherit" onClick={() => nav('/signin')}>
+                    <PersonIcon />
+                </IconButton>
+
+                <IconButton color="inherit" onClick={changeMode}>
+                    {darkMode ? <DarkMode /> : <LightMode />}
+                </IconButton>
             </div>
 
           </div>
