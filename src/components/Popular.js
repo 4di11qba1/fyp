@@ -12,7 +12,7 @@ export default function Popular({ item }) {
   return (
     <Card
       sx={{
-        // padding: '20px',
+        padding: '20px',
         flexGrow: 1,
         flexBasis: 345,
         borderRadius: '15px',
@@ -27,15 +27,15 @@ export default function Popular({ item }) {
         alt={item.title}
         height="200"
         image={item.img}
-        // sx={{borderRadius: '15px'}}
+        sx={{borderRadius: '15px'}}
       />
       <CardContent>
         <Typography gutterBottom variant="h6" component="div">
           {item.title}
         </Typography>
-        {/* <Typography variant="body2" color="text.secondary" sx={{height: '63px', overflowY: 'auto'}}>
+        <Typography variant="body2" color="text.secondary" sx={{height: '63px', overflowY: 'auto'}}>
           {item.desc}
-        </Typography> */}
+        </Typography>
       </CardContent>
       <CardActions sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
         <div style={{display: 'flex', alignItems: 'center', gap: '5px'}}>

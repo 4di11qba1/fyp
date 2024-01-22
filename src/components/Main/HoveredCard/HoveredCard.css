@@ -1,6 +1,4 @@
 .hoveredCard {
-	width: 24rem;
-	height: 36rem;
 	border-radius: 10px;
 	overflow: hidden;
 	cursor: pointer;
