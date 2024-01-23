@@ -1,13 +1,13 @@
 // import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
+// import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
+// import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
+// import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import { useNavigate } from 'react-router-dom';
 
-export default function Popular({ item }) {
+export default function ListingCard({ item }) {
   const nav = useNavigate();
   return (
     <div
@@ -21,6 +21,7 @@ export default function Popular({ item }) {
           transform: 'scale(1.05)',
         },
       }}
+      onClick={() => nav('/store/game')}
     >
       <CardMedia
         component="img"
@@ -29,22 +30,36 @@ export default function Popular({ item }) {
         image={item.img}
         sx={{borderRadius: '15px'}}
       />
-      <CardContent>
+      {/* <CardContent>
         <Typography gutterBottom variant="h6" component="div">
           {item.title}
         </Typography>
         <Typography variant="body2" color="text.secondary" sx={{height: '63px', overflowY: 'auto'}}>
           {item.desc}
         </Typography>
-      </CardContent>
-      <CardActions sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-        <div style={{display: 'flex', alignItems: 'center', gap: '5px'}}>
+      </CardContent> */}
+      <CardActions sx={{display: 'flex', alignItems: 'center', gap: '15px'}}>
+        {/* <div style={{display: 'flex', alignItems: 'center', gap: '5px'}}>
             <StarBorderOutlinedIcon />
             <Typography variant="h6" fontWeight={'bold'} noWrap component="div">
               {item.rating}
             </Typography>
         </div>
-        <Button variant='contained' size="medium" onClick={() => nav('/store/game')}>See More</Button>
+        <Button variant='contained' size="medium" onClick={() => nav('/store/game')}>See More</Button> */}
+        <CardMedia
+            component="img"
+            alt={item.title}
+            image={item.img}
+            sx={{borderRadius: '15px', width: '75px', height: '75px'}}
+        />
+        <div style={{display: 'flex', flexDirection: 'column'}}>
+            <Typography component="div" variant='p' fontWeight={'bold'}>
+                {item.title}
+            </Typography>
+            <Typography component="div" variant='p'>
+                {item.genre}
+            </Typography>
+        </div>
       </CardActions>
     </div>
   );

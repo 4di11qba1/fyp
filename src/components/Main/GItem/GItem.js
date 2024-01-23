@@ -8,7 +8,7 @@ function GItem({item}) {
     const nav = useNavigate()
   return (
     <div className="gItem" onClick={() => nav('/store/game')}>
-        <img alt="title-image" src={item.img} style={{width: '100px', height: '100px', objectFit: 'cover', borderRadius: '5px'}} />
+        <img alt="title-imag" src={item.img} style={{width: '100px', height: '100px', objectFit: 'cover', borderRadius: '5px'}} />
         <div style={{display: 'flex', flexDirection: 'column'}}>
             <Typography component="div" variant="h6">
                 {item.title}

@@ -15,7 +15,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { Home } from '@mui/icons-material';
+import { BrowseGallery, Home } from '@mui/icons-material';
 import { Login, Logout, AppRegistration } from '@mui/icons-material';
 import { LightMode, DarkMode } from '@mui/icons-material';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -27,6 +27,7 @@ import Searchbar from '../Searchbar/Searchbar';
 import Main from '../Main/Main';
 import { Route, Routes } from 'react-router-dom';
 import Game from '../Game/Game';
+import Library from '../Library';
 
 const drawerWidth = 240;
 
@@ -174,7 +175,7 @@ export default function MiniDrawer({ windowWidth, lightTheme, darkTheme, darkMod
                 justifyContent: open ? 'initial' : 'center',
                 px: 2.5,
                 borderRadius: '0 30px 30px 0',
-                bgcolor: isActive('/') ? 'background.default' : ''
+                bgcolor: isActive('/store') ? 'background.default' : ''
               }}
             >
               <ListItemIcon
@@ -187,6 +188,28 @@ export default function MiniDrawer({ windowWidth, lightTheme, darkTheme, darkMod
                 <Home />
               </ListItemIcon>
               <ListItemText primary='Home' sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding sx={{ display: 'block' }} onClick={() => navigateTo('/store/library')}>
+            <ListItemButton
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? 'initial' : 'center',
+                px: 2.5,
+                borderRadius: '0 30px 30px 0',
+                bgcolor: isActive('/store/library') ? 'background.default' : ''
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : 'auto',
+                  justifyContent: 'center',
+                }}
+              >
+                <BrowseGallery />
+              </ListItemIcon>
+              <ListItemText primary='Library' sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
           </ListItem>
         </List>
@@ -296,6 +319,7 @@ export default function MiniDrawer({ windowWidth, lightTheme, darkTheme, darkMod
                 windowWidth={windowWidth} 
             />} 
           />
+          <Route path="/library" element={<Library />} />
           <Route path="/game" element={<Game windowWidth={windowWidth} />} />
         </Routes>
       </Box>

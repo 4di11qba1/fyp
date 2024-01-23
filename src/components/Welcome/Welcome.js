@@ -8,9 +8,11 @@ import Popular from '../Popular.js';
 // import { lightTheme, darkTheme } from '../Theme.js';
 import Promotion from '../Promotion/Promotion.js';
 import './Welcome.css';
-import GCard from '../GCard/GCard.js';
+// import GCard from '../GCard/GCard.js';
 // import OptionsList from '../OptionsList.js';
 import LandingCards from '../LandingCards/LandingCards.js';
+import ListingCard from '../ListingCard.js';
+import FlipCard from '../FlipCard/FlipCard.js';
 // import Slider from '../Slider/Slider.js';
 
 function Welcome({darkMode, changeMode, windowWidth, itemData, itemDataV, genreList}) {
@@ -70,7 +72,7 @@ function Welcome({darkMode, changeMode, windowWidth, itemData, itemDataV, genreL
                       <Divider flexItem />
                       <div style={{display: 'flex', flexWrap: 'wrap', gap: '15px', alignItems: 'center', justifyContent: 'center'}}>
                         {itemData.map((item, index) => {
-                          return <Popular key={index} item={item} />
+                          return <ListingCard key={index} item={item} />
                         })}
                       </div>
                       <Divider flexItem />
@@ -88,14 +90,31 @@ function Welcome({darkMode, changeMode, windowWidth, itemData, itemDataV, genreL
                       {/* <OptionsList genreList={genreList} /> */}
                       
                       <div style={{display: 'flex', flexWrap: 'wrap', gap: '15px', }}>
-                        {itemDataV.map((item, index) => {
+                        {/* {itemDataV.map((item, index) => {
                           return <GCard key={index} item={item} darkMode={darkMode} />
+                        })} */}
+                        {itemData.map((item, index) => {
+                          return <Popular key={index} item={item} />
                         })}
                       </div>
 
                       <Divider flexItem />
                       <Button variant="contained">Load More</Button>
                       <Divider flexItem  sx={{marginBottom: '20px'}}/>
+
+                      {/* <Divider flexItem /> */}
+                      <Typography component="div" variant="h4">
+                        Popular in Community
+                      </Typography>
+                      <Divider flexItem />
+                      <div style={{display: 'flex', flexWrap: 'wrap', gap: '15px', alignItems: 'center', justifyContent: 'center'}}>
+                        {itemDataV.map((item, index) => {
+                          return <FlipCard key={index} item={item} />
+                        })}
+                      </div>
+                      <Divider flexItem />
+                      <Button variant="contained">Load More</Button>
+                      <Divider flexItem />
                     </div>
 
                   </motion.div>
